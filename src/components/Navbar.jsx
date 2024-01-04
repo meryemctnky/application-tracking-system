@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isLoggedIn, logout } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -14,7 +14,7 @@ function Navbar() {
   };
 
   const handleLogout = async () => {
-    if (isLoggedIn) {
+    if (user) {
       try {
         await logout();
         navigate('/');
@@ -29,7 +29,7 @@ function Navbar() {
   return (
     <nav className='bg-white border-gray-200 dark:bg-gray-900'>
       <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
-        <Link to='/' className='flex items-center space-x-3 rtl:space-x-reverse'>
+        <Link to={`${!user ? '/' : '/admin/basvuru-listesi'}`} className='flex items-center space-x-3 rtl:space-x-reverse'>
           <img src={logo} className='h-8' alt='Logo' />
           <span className='self-center text-2xl font-semibold whitespace-nowrap dark:text-white'>AppTrack</span>
         </Link>
@@ -45,7 +45,7 @@ function Navbar() {
         </button>
         <div className={`${!isMenuOpen ? 'hidden' : ''} w-full md:block md:w-auto`}>
           <ul className='font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-8 rtl:space-x-reverse md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
-            {isLoggedIn ? (
+            {user ? (
               <li>
                 <NavLink
                   to='/admin/basvuru-listesi'
@@ -63,9 +63,7 @@ function Navbar() {
                 <li>
                   <NavLink
                     to='/'
-                    className={({
-                      isActive, // isActive durumunu alın
-                    }) =>
+                    className={({ isActive }) =>
                       isActive
                         ? 'block py-2 px-3 bg-transparent text-indigo-800 md:p-0 dark:text-white md:dark:text-indigo-500'
                         : 'block py-2 px-3 bg-transparent text-gray-900 md:p-0 dark:text-white md:dark:text-indigo-500'
@@ -78,9 +76,7 @@ function Navbar() {
                 <li>
                   <NavLink
                     to='/basvuru-sorgula'
-                    className={({
-                      isActive, // isActive durumunu alın
-                    }) =>
+                    className={({ isActive }) =>
                       isActive
                         ? 'block py-2 px-3 bg-transparent text-indigo-800 md:p-0 dark:text-white md:dark:text-indigo-500'
                         : 'block py-2 px-3 bg-transparent text-gray-900 md:p-0 dark:text-white md:dark:text-indigo-500'
@@ -97,7 +93,7 @@ function Navbar() {
                 className='inline-flex justify-center items-center py-2 px-5 text-base font-medium text-center text-white rounded-lg bg-indigo-700 hover:cursor-pointer hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900'
                 onClick={handleLogout}
               >
-                {isLoggedIn ? 'Çıkış Yap' : 'Giriş Yap'}
+                {user ? 'Çıkış Yap' : 'Giriş Yap'}
               </div>
             </li>
             <li className='px-3 md:px-0 md:my-0'>

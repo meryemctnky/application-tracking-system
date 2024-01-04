@@ -46,14 +46,6 @@ function MainNavbar() {
                 Çıkış Yap
               </Link>
             </li>
-            {/* <li>
-              <Link
-                to='/login'
-                className='inline-flex justify-center items-center py-2 px-5 text-base font-medium text-center text-indigo-700 rounded-lg border border-indigo-700 hover:border-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900'
-              >
-                Giriş Yap
-              </Link> 
-            </li>*/}
           </ul>
         </div>
       </div>

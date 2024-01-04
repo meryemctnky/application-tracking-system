@@ -10,4 +10,8 @@ export default defineConfig({
       REACT_APP_API_KEY: process.env.REACT_APP_API_KEY,
     }),
   ],
+  server: {
+    host: 'localhost',
+    port: 3000,
+  },
 });

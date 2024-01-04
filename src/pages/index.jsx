@@ -7,3 +7,4 @@ export { default as AdminPage } from './admin/AdminPage';
 export { default as ApplicationUpdate } from './admin/ApplicationUpdate';
 
 export { default as ErrorPage } from './Error';
+export { default as Register } from './Register';

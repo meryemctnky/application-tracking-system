@@ -55,6 +55,7 @@ function ApplicationQuery() {
                   className='border border-gray-300 rounded-lg py-2 px-4 w-full focus:outline-none focus:border-indigo-500'
                   placeholder='Başvuru kodunu girin'
                   onChange={handleInputChange}
+                  value={inputValue}
                 />
               </div>
               <button

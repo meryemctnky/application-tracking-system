@@ -1,11 +1,11 @@
 import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import ErrorPage from './Error';
 
-function ProtectedRoute(children) {
-  const { isLoggedIn } = useAuth();
+function ProtectedRoute({ children }) {
+  const { user } = useAuth();
 
-  return isLoggedIn ? children : <Navigate to={'/admin'} replace />;
+  return user ? children : <ErrorPage />;
 }
 
 export default ProtectedRoute;

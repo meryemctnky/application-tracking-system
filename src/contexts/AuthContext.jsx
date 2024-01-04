@@ -6,19 +6,14 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const register = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-
       if (currentUser) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        setUser(currentUser);
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
       } else {
+        setUser(null);
         localStorage.removeItem('currentUser');
       }
     });
@@ -33,20 +28,19 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
   const login = (email, password) => {
-    setIsLoggedIn(true);
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logout = () => {
-    setIsLoggedIn(false);
-    setUser(null);
     return signOut(auth);
   };
 
-  return <AuthContext.Provider value={{ user, isLoggedIn, logout, login }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, logout, login, createUser }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => useContext(AuthContext);
