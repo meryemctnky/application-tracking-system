@@ -4,7 +4,7 @@
 
 Projenin detayları aşağıda verilmiştir.
 
-# **Başvuru/Ticket Yönetim Sistemi** - [AppTrack](https://application-tracking-system-pi.vercel.app/basvuru-olustur)
+# **Başvuru/Ticket Yönetim Sistemi** - [AppTrack](https://application-tracking-system-pi.vercel.app/)
 
 ## **Technologies:**
 
