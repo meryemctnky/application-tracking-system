@@ -54,7 +54,7 @@ Kullanıcı adı ve şifre ile girilebilen bir ekrandan da yetkili kullanıcıla
 
 - Tüm formlarda gerekli validasyonlar
 - Back-end olarak firebase
-- Admin paneline e: kodluyoruz@kodluyoruz.com, p:bootcamp109 bilgileri ile giriş yapabilir.
+- Admin paneline **e: kodluyoruz@kodluyoruz.com, p: bootcamp109** bilgileri ile giriş yapabilir.
 - Admin panelinde bir menü ekli (başvuru listesi, çıkıs gibi işlemleri kapsıyor)
 
 ## **Usage**
